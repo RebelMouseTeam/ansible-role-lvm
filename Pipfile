@@ -20,6 +20,7 @@ configparser = "*"
 ipaddress = "*"
 docker-py = "*"
 "backports.ssl-match-hostname" = "*"
+python-vagrant = "*"
 
 
 [dev-packages]
