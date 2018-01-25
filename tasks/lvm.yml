@@ -1,7 +1,7 @@
 ---
 - name: update apt caches
   apt:
-    update_cache: yes
+    update_cache: 'yes'
     cache_valid_time: 3600
 
 - name: install lvm2

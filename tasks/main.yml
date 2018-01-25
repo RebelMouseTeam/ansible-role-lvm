@@ -2,7 +2,8 @@
 - include: volumes.yml
   when: volumes == 'auto'
 
-- set_fact:
+- name: set pvs for lvm
+  set_fact:
     pvs: "{{ volumes }}"
   when: volumes != 'auto'
 
