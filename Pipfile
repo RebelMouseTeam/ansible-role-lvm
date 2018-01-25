@@ -1,0 +1,30 @@
+[[source]]
+
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+
+[packages]
+
+molecule = "*"
+ansible = "==2.3.3.0"
+enum = "*"
+"flake8" = "*"
+docker = "*"
+pbr = "*"
+funcsigs = "*"
+"backports.functools-lru-cache" = "*"
+configparser = "*"
+"enum34" = "*"
+ipaddress = "*"
+docker-py = "*"
+
+
+[dev-packages]
+
+
+
+[requires]
+
+python_version = "2.7"
