@@ -1,0 +1,32 @@
+---
+- name: update apt caches
+  apt:
+    update_cache: yes
+    cache_valid_time: 3600
+
+- name: install lvm2
+  apt:
+    name: lvm2
+
+- name: create volume group
+  lvg:
+    vg: firefly
+    pvs: "{{ ','.join(volumes.stdout_lines) }}"
+
+- name: create logical volume
+  lvol:
+    vg: firefly
+    lv: local
+    size: 100%PVS
+
+- name: create filesystem
+  filesystem:
+    fstype: ext4
+    dev: /dev/firefly/local
+
+- name: mount partition
+  mount:
+    name: /mnt/local/
+    src: /dev/firefly/local
+    fstype: ext4
+    state: mounted

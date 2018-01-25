@@ -1,0 +1,14 @@
+---
+galaxy_info:
+  author: "Andrey Gubarev"
+  description: lvm
+  license: MIT
+  min_ansible_version: 2.3
+  platforms:
+    - name: Ubuntu
+      versions:
+        - xenial
+        - trusty
+  galaxy_tags:
+    - system
+  dependencies: []
