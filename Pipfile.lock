@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "611c1eceb60a48d0a5763a4995d04cd70c574b9154bfb4ae95ea8d9174465775"
+            "sha256": "5305172d97573542c650ef6b5c80eebf01054a695c9e3f2ae0345eb693a8a6bd"
         },
         "host-environment-markers": {
             "implementation_name": "cpython",
@@ -73,6 +73,12 @@
                 "sha256:31f235852f88edc1558d428d890663c49eb4514ffec9f3650e7f3c9e4a12e36f"
             ],
             "version": "==1.4"
+        },
+        "backports.ssl-match-hostname": {
+            "hashes": [
+                "sha256:502ad98707319f4a51fa2ca1c677bd659008d27ded9f6380c79e8932e38dcdf2"
+            ],
+            "version": "==3.5.0.1"
         },
         "bcrypt": {
             "hashes": [
@@ -152,6 +158,7 @@
                 "sha256:87f837459c3c78d75cb4f5aadf08a7104db15e8c7618a5c732e60f252279c7a6",
                 "sha256:df9083a992b17a28cd4251a3f5c879e0198bb26c9e808c4647e0a18739f1d11d"
             ],
+            "markers": "platform_python_implementation != 'PyPy'",
             "version": "==1.11.4"
         },
         "chardet": {

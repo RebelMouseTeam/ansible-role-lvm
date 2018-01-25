@@ -19,6 +19,7 @@ configparser = "*"
 "enum34" = "*"
 ipaddress = "*"
 docker-py = "*"
+"backports.ssl-match-hostname" = "*"
 
 
 [dev-packages]
