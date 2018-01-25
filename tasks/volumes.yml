@@ -1,0 +1,15 @@
+---
+- name: get root disk
+  shell: |
+    /bin/lsblk -niro MOUNTPOINT,NAME | /bin/grep -B 1 "/ " | /usr/bin/head -n 1 | /usr/bin/awk '{ print $1 }'
+  register: root_disk
+  changed_when: no
+
+- name: list available modules
+  shell: |
+    /bin/lsblk -dniro NAME | /bin/grep -v "{{ root_disk.stdout.strip() }}" | /usr/bin/awk '$0="/dev/"$0' | /usr/bin/sort -n
+  register: pvs
+  changed_when: no
+
+- set_fact:
+    pvs: "{{ pvs.stdout_lines }}"

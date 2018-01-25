@@ -11,7 +11,7 @@
 - name: create volume group
   lvg:
     vg: firefly
-    pvs: "{{ ','.join(volumes.stdout_lines) }}"
+    pvs: "{{ ','.join(pvs) }}"
 
 - name: create logical volume
   lvol:

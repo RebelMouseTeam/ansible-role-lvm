@@ -1,4 +1,6 @@
 molecule/default/.molecule/
 molecule/default/.cache/
+molecule/default/*.log
+.vagrant
 *.pyc
 __pycache__
