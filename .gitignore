@@ -4,3 +4,4 @@ molecule/default/*.log
 .vagrant
 *.pyc
 __pycache__
+*.vdi
