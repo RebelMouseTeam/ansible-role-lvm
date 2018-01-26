@@ -18,8 +18,8 @@ platforms:
   - name: trusty64
     box: ubuntu/trusty64
     raw_config_args:
-      - "customize ['createmedium', '--filename', 'trusty64vol1.vdi', '--size', 128, '--format', 'VDI']"
-      - "customize ['createmedium', '--filename', 'trusty64vol2.vdi', '--size', 128, '--format', 'VDI']"
+      - "customize ['createmedium', '--filename', 'trusty64vol1.vdi', '--size', 512, '--format', 'VDI']"
+      - "customize ['createmedium', '--filename', 'trusty64vol2.vdi', '--size', 512, '--format', 'VDI']"
       - "customize ['storageattach', :id, '--storagectl', 'SATAController', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', 'trusty64vol1.vdi']"
       - "customize ['storageattach', :id, '--storagectl', 'SATAController', '--port', 2, '--device', 0, '--type', 'hdd', '--medium', 'trusty64vol2.vdi']"
 provisioner:

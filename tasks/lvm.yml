@@ -30,3 +30,6 @@
     src: "/dev/{{ lvm_vg }}/{{ lvm_lv_name }}"
     fstype: "{{ lvm_lv_fstype }}"
     state: mounted
+
+- include: bindings.yml
+  when: lvm_bindings

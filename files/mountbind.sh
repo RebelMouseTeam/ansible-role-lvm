@@ -1,0 +1,11 @@
+#!/bin/sh
+
+set -e
+
+LVM_MOUNT_POINT=$1
+DIRECTORY=$2
+
+cp -a $DIRECTORY $LVM_MOUNT_POINT
+rm -rf $DIRECTORY
+mkdir -p $DIRECTORY
+mount --bind $LVM_MOUNT_POINT $DIRECTORY

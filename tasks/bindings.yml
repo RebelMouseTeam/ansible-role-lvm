@@ -1,0 +1,57 @@
+---
+- name: copy mountbind.sh script
+  copy:
+    src: mountbind.sh
+    dest: /usr/local/bin/mountbind.sh
+    mode: 0700
+    owner: root
+    group: root
+
+- name: bind home directory
+  command: "/usr/local/bin/mountbind.sh {{lvm_lv_mount}}/home /home"
+  args:
+    creates: "{{ lvm_lv_mount }}/home"
+  async: 10
+  poll: 10
+
+- name: mount home directory
+  mount:
+    path: /home
+    src: "{{ lvm_lv_mount }}/home"
+    opts: bind
+    fstype: "{{ lvm_lv_fstype }}"
+    state: present
+
+- name: bind tmp directory
+  command: "/usr/local/bin/mountbind.sh {{lvm_lv_mount}}/tmp /tmp"
+  async: 10
+  poll: 10
+  args:
+    creates: "{{ lvm_lv_mount }}/tmp"
+
+- name: mount tmp directory
+  mount:
+    path: /tmp
+    src: "{{ lvm_lv_mount }}/tmp"
+    opts: bind
+    fstype: "{{ lvm_lv_fstype }}"
+    state: present
+
+- name: check if /var is bound to lvm
+  stat:
+    path: "{{ lvm_lv_mount }}/var"
+  register: directory_var
+
+- name: bind var directory
+  command: "/usr/local/bin/mountbind.sh {{lvm_lv_mount}}/var /var"
+  async: 10
+  poll: 0
+  when: not directory_var.stat.exists
+
+- name: mount var directory
+  mount:
+    path: /var
+    src: "{{ lvm_lv_mount }}/var"
+    opts: bind
+    fstype: "{{ lvm_lv_fstype }}"
+    state: present
