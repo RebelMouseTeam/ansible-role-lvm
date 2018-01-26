@@ -17,6 +17,9 @@ volumes: auto
 ```yaml
 volumes: ['/dev/sda/', '/dev/sdb']
 ```
+
+Please note `volumes` variable is required.
+
 * intelligent partition scheme is enabled by default and can be disabled using
 ```yaml
 lvm_bindings: 'True'

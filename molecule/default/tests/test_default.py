@@ -8,3 +8,7 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 
 def test_lvm(host):
     assert host.file('/mnt/local/').is_directory
+
+
+def test_home_owner(host):
+    assert host.file('/home/ubuntu').user == 'ubuntu'

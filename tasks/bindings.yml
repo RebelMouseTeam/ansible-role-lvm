@@ -12,7 +12,7 @@
   args:
     creates: "{{ lvm_lv_mount }}/home"
   async: 10
-  poll: 10
+  poll: 1
 
 - name: mount home directory
   mount:
@@ -25,7 +25,7 @@
 - name: bind tmp directory
   command: "/usr/local/bin/mountbind.sh {{lvm_lv_mount}}/tmp /tmp"
   async: 10
-  poll: 10
+  poll: 1
   args:
     creates: "{{ lvm_lv_mount }}/tmp"
 

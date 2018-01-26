@@ -1,4 +1,9 @@
 ---
+- name: ensure volumes variable
+  assert:
+    that:
+      - 'volumes'
+
 - include: volumes.yml
   when: volumes == 'auto'
 
