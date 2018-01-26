@@ -23,6 +23,7 @@
   filesystem:
     fstype: "{{ lvm_lv_fstype }}"
     dev: "/dev/{{ lvm_vg }}/{{ lvm_lv_name }}"
+    resizefs: 'yes'
 
 - name: mount partition
   mount:
