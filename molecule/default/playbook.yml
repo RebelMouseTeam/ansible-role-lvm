@@ -4,3 +4,11 @@
   become: 'yes'
   roles:
     - role: ansible-role-lvm
+
+- name: Converge
+  hosts: all
+  become: 'yes'
+  vars:
+    volumes: ['/dev/sdb', '/dev/sdc']
+  roles:
+    - role: ansible-role-lvm

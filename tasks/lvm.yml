@@ -10,23 +10,23 @@
 
 - name: create volume group
   lvg:
-    vg: firefly
+    vg: "{{ lvm_vg }}"
     pvs: "{{ ','.join(pvs) }}"
 
 - name: create logical volume
   lvol:
-    vg: firefly
-    lv: local
-    size: 100%PVS
+    vg: "{{ lvm_vg }}"
+    lv: "{{ lvm_lv_name }}"
+    size: "{{ lvm_lv_size }}"
 
 - name: create filesystem
   filesystem:
-    fstype: ext4
-    dev: /dev/firefly/local
+    fstype: "{{ lvm_lv_fstype }}"
+    dev: "/dev/{{ lvm_vg }}/{{ lvm_lv_name }}"
 
 - name: mount partition
   mount:
-    name: /mnt/local/
-    src: /dev/firefly/local
-    fstype: ext4
+    name: "{{ lvm_lv_mount }}"
+    src: "/dev/{{ lvm_vg }}/{{ lvm_lv_name }}"
+    fstype: "{{ lvm_lv_fstype }}"
     state: mounted
