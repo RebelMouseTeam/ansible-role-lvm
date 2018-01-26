@@ -1,5 +1,5 @@
 ---
-volumes:
+volumes: auto
 lvm_vg: firefly
 lvm_lv_name: local
 lvm_lv_fstype: ext4
