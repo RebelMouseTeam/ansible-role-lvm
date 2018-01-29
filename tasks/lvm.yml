@@ -1,7 +1,7 @@
 ---
 - name: update apt caches
   apt:
-    update_cache: 'yes'
+    update_cache: 'True'
     cache_valid_time: 3600
 
 - name: install lvm2
@@ -23,7 +23,7 @@
   filesystem:
     fstype: "{{ lvm_lv_fstype }}"
     dev: "/dev/{{ lvm_vg }}/{{ lvm_lv_name }}"
-    resizefs: 'yes'
+    resizefs: 'True'
 
 - name: mount lvm partition
   mount:

@@ -1,7 +1,7 @@
 ---
 - name: Converge
   hosts: all
-  become: 'yes'
+  become: 'True'
   roles:
     - role: ansible-role-lvm
       lvm_disks: auto

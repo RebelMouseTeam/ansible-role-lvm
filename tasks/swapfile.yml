@@ -1,0 +1,45 @@
+---
+- name: define swapfile size
+  set_fact:
+    swapfile_size: "{{ ansible_memtotal_mb }}MB"
+  when: not swapfile_size
+
+- name: write swapfile
+  command: |
+    fallocate -l {{ swapfile_size }} {{ swapfile_location }}
+  args:
+    creates: "{{ swapfile_location }}"
+  changed_when: 'False'
+
+- name: set swapfile permissions
+  file: path={{ swapfile_location }} mode=0600
+
+- name: create swapfile
+  command: "mkswap {{ swapfile_location }}"
+  changed_when: 'False'
+
+- name: enable swapfile
+  command: "swapon {{ swapfile_location }}"
+  changed_when: 'False'
+
+- name: add swapfile to /etc/fstab
+  lineinfile:
+    dest: /etc/fstab
+    line: "{{ swapfile_location }}   none    swap    sw    0   0"
+    state: present
+
+- name: configure vm.swappiness
+  sysctl:
+    state: present
+    reload: 'True'
+    name: vm.swappiness
+    value: "{{ swapfile_swappiness }}"
+  when: swapfile_swappiness != false
+
+- name: configure vm.vfs_cache_pressure
+  sysctl:
+    state: present
+    reload: 'True'
+    name: vm.vfs_cache_pressure
+    value: "{{ swapfile_vfs_cache_pressure }}"
+  when: swapfile_vfs_cache_pressure != false

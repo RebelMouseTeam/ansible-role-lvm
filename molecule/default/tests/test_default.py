@@ -13,3 +13,7 @@ def test_lvm(host):
 def test_home_owner(host):
     assert host.file('/home/ubuntu').user == 'ubuntu'
     assert host.file('/mnt/local/home/ubuntu').user == 'ubuntu'
+
+
+def test_swapfile(host):
+    assert host.file('/mnt/local/swapfile').is_file

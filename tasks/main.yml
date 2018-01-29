@@ -9,3 +9,21 @@
 
 - include: lvm.yml
   when: pvs
+
+- name: define swapfile as /mnt/local/swapfile
+  set_fact:
+    swapfile_location: "{{ lvm_lv_mount }}/swapfile"
+  when: pvs
+
+- name: define swapfile as /mnt/swapfile
+  set_fact:
+    swapfile_location: /mnt/swapfile
+  when: not pvs
+
+- name: check if swapfile exists
+  stat:
+    path: "{{ swapfile_location }}"
+  register: swapfile
+
+- include: swapfile.yml
+  when: not swapfile.stat.exists

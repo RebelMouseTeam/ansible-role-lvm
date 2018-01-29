@@ -6,3 +6,7 @@ lvm_lv_fstype: ext4
 lvm_lv_mount: /mnt/local
 lvm_lv_size: 100%PVS
 partitioning: 'True'
+swapfile_location:
+swapfile_size:
+swapfile_swappiness: 1
+swapfile_vfs_cache_pressure: 50
