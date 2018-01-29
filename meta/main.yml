@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   author: "Andrey Gubarev"
-  description: lvm
+  description: partitioning
   license: MIT
   min_ansible_version: 2.3
   platforms:
