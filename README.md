@@ -24,5 +24,5 @@ lvm_disks: ['/dev/sda/', '/dev/sdb']
 ```
 * intelligent partition scheme is enabled by default and can be disabled using
 ```yaml
-lvm_bindings: 'True'
+partitioning: 'True'
 ```

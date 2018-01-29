@@ -5,4 +5,4 @@ lvm_lv_name: local
 lvm_lv_fstype: ext4
 lvm_lv_mount: /mnt/local
 lvm_lv_size: 100%PVS
-lvm_bindings: 'True'
+partitioning: 'True'
