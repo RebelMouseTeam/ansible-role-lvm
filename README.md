@@ -12,7 +12,8 @@ output: {all: '| tee -a /var/log/cloud-init-output.log'}
 write_files:
   - path: /root/requirements.yml
     content: |
-      - src: RebelMouseTeam.partitioning,1.0.0
+      - src: RebelMouseTeam.partitioning
+        version: 1.0.0
   - path: /root/bootstrap.yml
     content: |
       - hosts: localhost
