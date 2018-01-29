@@ -1,5 +1,32 @@
 # Ansible role for disk partitioning
 
+Install:
+
+`ansible-galaxy install RebelMouseTeam.partitioning,1.0.0`
+
+Usage:
+
+```yaml
+#cloud-config
+output: {all: '| tee -a /var/log/cloud-init-output.log'}
+write_files:
+  - path: /root/requirements.yml
+    content: |
+      - src: RebelMouseTeam.partitioning,1.0.0
+  - path: /root/bootstrap.yml
+    content: |
+      - hosts: localhost
+        connection: local
+        gather_facts: yes
+        become: yes
+        roles:
+          - RebelMouseTeam.partitioning
+runcmd:
+  - sleep 90
+  - ansible-galaxy install -p /etc/ansible/roles -r /root/requirements.yml
+  - HOME=/root ansible-playbook /root/bootstrap.yml
+  ```
+
 This role results in:
 
 * logical volume `/dev/firefly/local`
