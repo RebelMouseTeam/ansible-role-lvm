@@ -25,7 +25,7 @@
     dev: "/dev/{{ lvm_vg }}/{{ lvm_lv_name }}"
     resizefs: 'yes'
 
-- name: mount partition
+- name: mount lvm partition
   mount:
     name: "{{ lvm_lv_mount }}"
     src: "/dev/{{ lvm_vg }}/{{ lvm_lv_name }}"

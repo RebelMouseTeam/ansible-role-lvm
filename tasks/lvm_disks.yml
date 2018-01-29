@@ -5,7 +5,7 @@
   register: root_disk
   changed_when: 'False'
 
-- name: list available modules
+- name: list available disks
   shell: |
     /bin/lsblk -dniro NAME | /bin/grep -v "{{ root_disk.stdout.strip() }}" | /usr/bin/awk '$0="/dev/"$0' | /usr/bin/sort -n
   register: pvs
