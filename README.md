@@ -1,4 +1,4 @@
-# Ansible role for LVM
+# Ansible role for disk partitioning
 
 This role results in:
 
