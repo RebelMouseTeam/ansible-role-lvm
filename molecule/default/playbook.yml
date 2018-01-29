@@ -4,4 +4,4 @@
   become: 'yes'
   roles:
     - role: ansible-role-lvm
-      volumes: auto
+      lvm_disks: auto

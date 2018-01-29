@@ -1,11 +1,11 @@
 ---
-- include: volumes.yml
-  when: volumes == 'auto'
+- include: lvm_disks.yml
+  when: lvm_disks == 'auto'
 
 - name: set pvs for lvm
   set_fact:
-    pvs: "{{ volumes }}"
-  when: volumes != 'auto'
+    pvs: "{{ lvm_disks }}"
+  when: lvm_disks != 'auto'
 
 - include: lvm.yml
   when: pvs
